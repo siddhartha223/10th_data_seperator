@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f2" />
+    <meta name="description" content="Extract class X student records from CSV, Excel, or ZIP files in your browser." />
+    <title>Class X — Student Data Extractor</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Class X home">
+          <span class="brand-mark"><span></span><span></span><span></span></span>
+          <span>class<span class="brand-x">X</span></span>
+        </a>
+        <div class="topbar-note"><span class="secure-dot"></span> Files stay on this device</div>
+      </header>
+
+      <main>
+        <section class="intro">
+          <div class="eyebrow"><span class="eyebrow-line"></span> STUDENT DATA TOOLKIT</div>
+          <h1>Find your <em>tenth graders.</em></h1>
+          <p>Drop in a student list or a folder of files. We’ll pull out every Class X record and prepare it for download.</p>
+        </section>
+
+        <section class="workspace" aria-label="Extract Class X data">
+          <div class="step-heading"><span class="step-number">01</span><div><h2>Choose your files</h2><p>CSV, Excel, or a ZIP containing multiple files</p></div></div>
+          <input id="file-input" type="file" accept=".csv,.xlsx,.xls,.zip,.rar" multiple hidden />
+          <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Choose or drop files">
+            <div class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14.5v3A2.5 2.5 0 0 0 7.5 20h9a2.5 2.5 0 0 0 2.5-2.5v-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="drop-copy"><strong>Drop files here</strong><span>or <button type="button" class="text-button" id="browse-button">browse files</button></span></div>
+            <span class="file-types">.CSV <i></i> .XLSX <i></i> .XLS <i></i> .ZIP <i></i> .RAR</span>
+          </div>
+          <div class="file-list" id="file-list" aria-live="polite"></div>
+          <div class="step-heading output-heading"><span class="step-number">02</span><div><h2>Choose your output</h2><p>Pick how you’d like the Class X data packaged</p></div></div>
+          <div class="output-options">
+            <label class="output-card selected" data-mode="combined">
+              <input type="radio" name="output" value="combined" checked />
+              <span class="radio-mark"></span>
+              <span class="format-icon workbook-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3.75h8l4 4v12.5H6a2 2 0 0 1-2-2v-12.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 4v4h4M8 12h8M8 15.5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="option-copy"><strong>One Excel workbook</strong><small>All Class X students together, with a source file column</small></span>
+              <span class="option-tag">.XLSX</span>
+            </label>
+            <label class="output-card" data-mode="individual">
+              <input type="radio" name="output" value="individual" />
+              <span class="radio-mark"></span>
+              <span class="format-icon archive-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 7.5h15v12h-15zM3.5 4.5h17v3h-17zM10 11h4m-4 3h4m-4 3h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="option-copy"><strong>Separate files in a ZIP</strong><small>One Excel workbook per input file, bundled together</small></span>
+              <span class="option-tag">.ZIP</span>
+            </label>
+          </div>
+          <button class="process-button" id="process-button" disabled><span>Extract Class X data</span><svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="progress-wrap" id="progress-wrap" hidden>
+            <div class="progress-label"><span id="progress-message">Getting ready…</span><span id="progress-percent">0%</span></div>
+            <progress id="progress-bar" max="100" value="0" aria-label="File processing progress"></progress>
+          </div>
+          <div class="status" id="status" role="status" aria-live="polite"></div>
+          <div class="results" id="results" hidden></div>
+          <section class="preview" id="preview" hidden aria-label="Preview extracted student rows">
+            <div class="preview-heading"><div><h3>Data preview</h3><p id="preview-count"></p></div><span class="preview-limit">FIRST 10 ROWS</span></div>
+            <div class="table-scroll"><table id="preview-table"></table></div>
+          </section>
+        </section>
+
+        <div class="privacy-note"><span class="lock-icon"><svg viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span> Your files are processed locally in your browser and are never uploaded.</div>
+      </main>
+      <footer><span>CLASS X <span class="footer-sep">/</span> STUDENT DATA EXTRACTOR</span><span>Made for school data workflows</span></footer>
+    </div>
+  </body>
+</html>

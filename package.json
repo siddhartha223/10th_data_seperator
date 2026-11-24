@@ -1,0 +1,21 @@
+{
+  "name": "class-x-student-extractor",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "node scripts/copy-unrar-assets.mjs && vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@unrar-browser/core": "1.0.3",
+    "jszip": "3.10.2",
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "vite": "8.3.8"
+  }
+}
